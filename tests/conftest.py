@@ -1,4 +1,4 @@
-# onfigurações para todos os nossos testes
+# configurações para todos os nossos testes
 import pytest
 from app import create_app
 
