@@ -1,0 +1,7 @@
+-r production.txt
+# -r referencia o arquivo production.txt
+pytest==7.1.2
+
+# libs necessarias para nosso projeto ser executado tranquilamente, para instalar todas, basta executar o comando "pip install -r requirements/development.txt"
+# ao executar 'pip3 freeze', no terminal, aparecerá todas as libs que estaão instaladas no nosso ambiente virtual 
+
