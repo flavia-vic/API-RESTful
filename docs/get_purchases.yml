@@ -1,0 +1,35 @@
+Consultar cadastros de ordem de compra
+Traz todos os resultados da tabela
+---
+parameters:
+  - name: page_size
+    in: path
+    required: true
+    schema:
+      type: integer
+      example: 1
+
+definitions:
+  OrdemCompra:
+    type: object
+    properties:
+      id:
+        type: integer
+      description:
+        type: string
+
+responses:
+  200:
+    description: Consulta realizada com sucesso
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/OrdemCompra'
+    examples:
+      application/json:
+        - id: 1
+          description: "pedido de compra numero 3"
+        - id: 2
+          description: "Descrição da ordem de compra"
+  400:
+    description: Requisição inválida (falta o parâmetro page_size ou está em formato incorreto)

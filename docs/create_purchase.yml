@@ -1,0 +1,32 @@
+Cadastro de ordem de compra
+Cadastra ordem de compra ao informar uma descricao
+---
+parameters:
+  - name: description
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        description:
+          type: string
+          example: "Descrição da ordem de compra"
+definitions:
+  OrdemCompra:
+    type: object
+    properties:
+      id:
+        type: integer
+      description:
+        type: string
+responses:
+  200:
+    description: Ordem de compra cadastrada com sucesso
+    schema:
+      $ref: '#/definitions/OrdemCompra'
+    examples:
+      application/json:
+        id: 1
+        description: "Descrição da ordem de compra"
+  400:
+    description: Requisição inválida (falta a descrição ou está em formato incorreto)
