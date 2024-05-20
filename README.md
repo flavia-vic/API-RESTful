@@ -8,6 +8,7 @@ Este projeto utiliza Python com o microframework Flask para criar uma API RESTfu
 - Flask
 - TDD
 - Insomnia
+- flasgger
 
 ## Funcionalidade:
 - Recebe requisições HTTP com pelo insomnia, outro cliente HTTP.
