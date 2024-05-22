@@ -1,0 +1,39 @@
+post:
+  tags:
+    - Purchase Order
+  summary: Adiciona um item a uma ordem de compra
+  description: Cadastra um item em uma ordem de compra existente usando o ID da ordem de compra fornecido na URL.
+  parameters:
+    - name: id
+      in: path
+      type: integer
+      required: true
+      description: ID da ordem de compra
+    - name: body
+      in: body
+      required: true
+      schema:
+        type: object
+        properties:
+          description:
+            type: string
+            description: Nome do item
+            example: Nome do item
+          price:
+            type: number
+            description: Preço do item
+            example: 100.00
+responses:
+  200:
+    description: Ordem de compra cadastrada com sucesso
+    schema:
+      $ref: '#/definitions/OrdemCompra'
+    examples:
+      application/json:
+        - id: 9
+          description: "item do pedido"
+          price: 2000
+          purchase_order_id: 2 
+       
+  400:
+    description: Requisição inválida (falta a descrição ou está em formato incorreto)

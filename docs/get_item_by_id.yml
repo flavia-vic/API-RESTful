@@ -1,0 +1,39 @@
+Consultar ordem de compra por ID
+Traz todos os resultados da tabela
+---
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: integer
+      example: 1
+
+definitions:
+  OrdemCompra:
+    type: object
+    properties:
+      id:
+        type: integer
+      description:
+        type: string
+
+responses:
+  200:
+    description: Consulta realizada com sucesso
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/OrdemCompra'
+    examples:
+      application/json:
+        - id: 1
+          description: "cama"
+          price: 200
+          purchase_order_id: 2
+        - id: 2
+          description: "sofa"
+          price: 300
+          purchase_order_id: 3
+  400:
+    description: Requisição inválida (falta o parâmetro page_size ou está em formato incorreto)
