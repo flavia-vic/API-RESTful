@@ -8,13 +8,17 @@ from purchase_orders.resources import PurchaseOrders, purchaseOrdersById
 from purchase_orders_items.resources import PurchaseOrdersItems
 
 
-def create_app():
+def create_app(env):
         
     app = Flask (__name__)
     api = Api(app)
     swagger = Swagger(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://pi:raspberry@192.168.1.10/meubanco'
+    database = 'Teste'
+    if env == 'testing':
+        database = 'Teste'
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://pi:raspberry@192.168.1.10/{}'.format(database)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
@@ -25,7 +29,4 @@ def create_app():
     @app.before_request 
     def create_tables():
         db.create_all()
-    app.run(debug=True)
     return app
-   
-create_app()
