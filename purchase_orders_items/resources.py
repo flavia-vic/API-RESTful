@@ -24,9 +24,13 @@ class PurchaseOrdersItems(Resource):
 
     @swag_from('../docs/get_item_by_id.yml')
     def get(self,id):
-        purchase_orders_items = PurchaseOrdersItemsModel.find_by_id_purchase_order_id(id)
+        purchase_order = PurchaseOrderModel.find_by_id(id)
+        if purchase_order:
+            purchase_orders_items = PurchaseOrdersItemsModel.find_by_id_purchase_order_id(id)
 
-        return [p.as_dict() for p in purchase_orders_items]
+            return [p.as_dict() for p in purchase_orders_items]
+        return jsonify({'message':'Pedido de id {} não encontrado'.format(id)})
+    
 
 
     @swag_from('../docs/post_item.yml')
