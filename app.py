@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from db import db
 from flasgger import Swagger
+from flask_migrate import Migrate
 
 
 from purchase_orders.resources import PurchaseOrders, purchaseOrdersById
@@ -14,7 +15,7 @@ def create_app(env):
     api = Api(app)
     swagger = Swagger(app)
 
-    database = 'Teste'
+    database = 'meubanco'
     if env == 'testing':
         database = 'Teste'
 
@@ -22,6 +23,9 @@ def create_app(env):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
+
+    Migrate(app,db)
+
     api.add_resource(PurchaseOrders,'/purchase_orders')
     api.add_resource(purchaseOrdersById, '/purchase_orders/<int:id>')
     api.add_resource(PurchaseOrdersItems, '/purchase_orders/<int:id>/items')

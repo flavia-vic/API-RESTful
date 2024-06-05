@@ -3,7 +3,8 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 *$py.class
-
+.vscode
+.migrations
 # C extensions
 *.so
 

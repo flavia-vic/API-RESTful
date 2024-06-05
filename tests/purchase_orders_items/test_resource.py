@@ -79,3 +79,4 @@ def test_post_purchase_order_invalid(test_client):
     )
 
     assert response.json['message'] == 'Purchase Order {} não encontrado'.format(id)
+
