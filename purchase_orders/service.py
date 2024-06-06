@@ -1,13 +1,21 @@
 from .model import PurchaseOrderModel
 from flask import jsonify
+from .exception import Quantityexception
 
 class PurchaseorderService:
+	#esta é uma funçaão privada
+	def _check_quantity(self, quantity):
+		if quantity < 50 or quantity > 150:
+			raise Quantityexception('A quantidade deve ser entre 50 e 150 items')
+
+
 
 	def find_all(self):
 		purchase_orders = PurchaseOrderModel.find_all()
 		return [p.as_dict() for p in purchase_orders]
 
 	def create(self,**kwargs):
+		self._check_quantity(kwargs['quantity'])
 		purchase_order = PurchaseOrderModel(**kwargs)
 		purchase_order.save()
 

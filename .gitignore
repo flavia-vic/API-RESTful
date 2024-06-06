@@ -7,6 +7,7 @@ __pycache__/
 .migrations
 # C extensions
 *.so
+.pytest_cache
 
 # Distribution / packaging
 .Python
@@ -121,11 +122,14 @@ __pypackages__/
 celerybeat-schedule
 celerybeat.pid
 
+
 # SageMath parsed files
 *.sage.py
 
 # Environments
 .env
+.env.test
+.env.development
 .venv
 env/
 venv/

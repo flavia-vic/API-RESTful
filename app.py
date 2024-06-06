@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_restful import Api
 from db import db
@@ -9,17 +10,14 @@ from purchase_orders.resources import PurchaseOrders, purchaseOrdersById
 from purchase_orders_items.resources import PurchaseOrdersItems
 
 
-def create_app(env):
+def create_app():
         
     app = Flask (__name__)
     api = Api(app)
     swagger = Swagger(app)
 
-    database = 'meubanco'
-    if env == 'testing':
-        database = 'Teste'
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://pi:raspberry@192.168.1.10/{}'.format(database)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DB_URI']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)

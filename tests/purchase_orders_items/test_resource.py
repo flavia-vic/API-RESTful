@@ -9,6 +9,7 @@ def test_get_items_by_purchase_orders_id(test_client,seed_db):
     assert response.json[0]['description'] == seed_db['items'].description
     assert response.json[0]['price'] == seed_db['items'].price
 
+
 def test_get_items_by_purchase_orders_not_found(test_client):
     id = 999
     response = test_client.get('/purchase_orders/{}/items'.format(id))

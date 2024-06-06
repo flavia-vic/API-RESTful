@@ -7,7 +7,7 @@ from purchase_orders_items.model import PurchaseOrdersItemsModel
 
 @pytest.fixture()
 def seed_db():
-    po = PurchaseOrderModel('purchase Order teste')
+    po = PurchaseOrderModel('purchase Order teste',50)
     db.session.add(po)
     db.session.commit()
 
