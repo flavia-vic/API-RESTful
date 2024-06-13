@@ -1,10 +1,10 @@
 from flask_restful import Resource, reqparse
 from flasgger import swag_from
-from .service import PurchaseorderService
+from .service import PurchaseOrderService
 from flask import jsonify
 
 class PurchaseOrders(Resource):
-    __service__= PurchaseorderService()
+    __service__= PurchaseOrderService()
 
     parser = reqparse.RequestParser()
     parser.add_argument(
@@ -32,7 +32,7 @@ class PurchaseOrders(Resource):
  
 
 class purchaseOrdersById(Resource):
-    __service__ = PurchaseorderService()
+    __service__ = PurchaseOrderService()
 
     @swag_from('../docs/get_purchase_by_id.yml')
     def get(self,id):

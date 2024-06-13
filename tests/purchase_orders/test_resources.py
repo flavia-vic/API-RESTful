@@ -11,6 +11,21 @@ def test_get_purchase_orders(test_client, seed_db):
 
 
 
+
+def test_post_purchase_orders_with_invalide_quantity(test_client):
+    obj = {'description':'Purchase Order Id 2', 'quantity':151}
+
+    response = test_client.post(
+        '/purchase_orders',
+        data =json.dumps(obj),
+        content_type = 'application/json'
+    )
+
+    assert response.status_code == 400
+    assert response.json['message'] == 'A quantidade deve ser entre 50 e 150 items'
+    
+
+
 def test_post_purchase_orders(test_client):
     obj = {'description':'Purchase Order Id 2', 'quantity':150}
 

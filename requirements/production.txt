@@ -31,3 +31,5 @@ SQLAlchemy==2.0.30
 tomli==2.0.1
 typing_extensions==4.11.0
 Werkzeug==3.0.3
+Flask-JWT-Extended==4.4.4
+passlib==1.7.4
