@@ -1,11 +1,12 @@
 from flask_restful import Resource, reqparse
 from flasgger import swag_from
+from flask_jwt_extended import jwt_required
 from .service import PurchaseOrderService
 from flask import jsonify
 
 class PurchaseOrders(Resource):
     __service__= PurchaseOrderService()
-
+    method_decorators = [jwt_required()] 
     parser = reqparse.RequestParser()
     parser.add_argument(
         'description',
